@@ -63,7 +63,25 @@ public class livroDAO {
         try {
             
             pstm = con.prepareStatement(sql);
+            pstm.setString(1, objLivroDTO.getNome_livro());
             pstm.setInt(1, objLivroDTO.getId_livro());
+            
+            pstm.execute();
+            pstm.close();
+            
+        } catch (SQLException e) {
+        }
+    }
+    
+    public void AlterarLivro(livroDTO objLivroDTO) throws ClassNotFoundException{
+        
+        String sql = "update livro set nome_livro = ? where id_livro = ?";
+        con = new ConexaoDAO().conexaoBD();
+        
+        try {
+            
+            pstm = con.prepareStatement(sql);
+            pstm.setInt(2, objLivroDTO.getId_livro());
             
             pstm.execute();
             pstm.close();

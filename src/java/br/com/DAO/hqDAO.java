@@ -72,4 +72,21 @@ public class hqDAO {
         }
     }
     
+    public void AlterarHq(hqDTO objHqDTO) throws ClassNotFoundException{
+        
+        String sql = "update hq set nome_hq = ? where id_hq = ?";
+        con = new ConexaoDAO().conexaoBD();
+        
+        try {
+            
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1, objHqDTO.getNome_hq());
+            pstm.setInt(2, objHqDTO.getId_hq());
+            
+            pstm.execute();
+            pstm.close();
+            
+        } catch (SQLException e) {
+        }
+    }
 }

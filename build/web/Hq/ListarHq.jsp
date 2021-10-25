@@ -31,6 +31,10 @@
                     out.print("<a href='frmExcluirHqVIEW.jsp?id="
                     + lista.get(num).getId_hq() + "&nome="
                     + lista.get(num).getNome_hq() + "'> Excluir </a>");
+                    
+                    out.print("<a href='frmAlterarHqVIEW.jsp?id="
+                    + lista.get(num).getId_hq() + "&nome="
+                    + lista.get(num).getNome_hq() + "'> Alterar </a>");
         %> <BR><BR> <%
                 }
                     
