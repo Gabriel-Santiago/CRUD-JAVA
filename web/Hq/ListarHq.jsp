@@ -27,6 +27,11 @@
                 for(num = 0; num < lista.size(); num++){
                     out.print("Código: " + lista.get(num).getId_hq() + "<br>");
                     out.print("Nome: " + lista.get(num).getNome_hq() + "<br>");
+                    
+                    out.print("<a href='frmExcluirHqVIEW.jsp?id="
+                    + lista.get(num).getId_hq() + "&nome="
+                    + lista.get(num).getNome_hq() + "'> Excluir </a>");
+        %> <BR><BR> <%
                 }
                     
             } catch (Exception e) {

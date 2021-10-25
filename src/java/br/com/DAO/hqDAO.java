@@ -55,4 +55,21 @@ public class hqDAO {
         return lista;
     }
     
+    public void ExcluirHq(hqDTO objHqDTO) throws ClassNotFoundException{
+        
+        String sql = "delete from hq where id_hq = ?";
+        con = new ConexaoDAO().conexaoBD();
+        
+        try {
+            
+            pstm = con.prepareStatement(sql);
+            pstm.setInt(1, objHqDTO.getId_hq());
+            
+            pstm.execute();
+            pstm.close();
+            
+        } catch (SQLException e) {
+        }
+    }
+    
 }
