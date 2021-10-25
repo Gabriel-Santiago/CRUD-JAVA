@@ -3,12 +3,16 @@ package br.com.DAO;
 import br.com.DTO.livroDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class livroDAO {
     
     Connection con;
     PreparedStatement pstm;
+    ResultSet rs;
+    ArrayList<livroDTO> lista = new ArrayList<>();
     
     public void CadastrarLivro(livroDTO objLivroDTO) throws ClassNotFoundException{
         
@@ -27,4 +31,27 @@ public class livroDAO {
         }
     }
     
+    public ArrayList<livroDTO> PesquisarLivro() throws ClassNotFoundException{
+        
+        String sql = "select * from livro";
+        con = new ConexaoDAO().conexaoBD();
+        
+        try {
+            
+            pstm = con.prepareStatement(sql);
+            rs = pstm.executeQuery(sql);
+            
+            while(rs.next()){
+                livroDTO objLivroDTO = new livroDTO();
+                objLivroDTO.setId_livro(rs.getInt("id_livro"));
+                objLivroDTO.setNome_livro(rs.getString("nome_livro"));
+                
+                lista.add(objLivroDTO);
+            }
+            
+        } catch (SQLException e) {
+        }
+        
+        return lista;        
+    }
 }
